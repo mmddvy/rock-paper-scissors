@@ -58,6 +58,8 @@ document.querySelector("#human-score").textContent = humanScore;
         });
     });
 
+    
+
 // function playGame(){
 //     for(let i = 1;i<=5;i++){
 //     const humanSelection = getUserChoice();

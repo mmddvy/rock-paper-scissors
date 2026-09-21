@@ -1,0 +1,14 @@
+.choices{
+    display: flex;
+    gap: 20px;
+}
+button{
+    font-size: 20px;
+    height: 70px;
+    width: 90px;
+    color: red;
+    background-color: rgb(222, 222, 235);
+}
+button:active{
+    transform: scale(0.9);
+}
