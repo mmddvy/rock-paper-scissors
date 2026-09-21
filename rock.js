@@ -1,6 +1,7 @@
-const button = document.querySelector("#start");
 
-button.addEventListener("click", playGame);
+
+
+// button.addEventListener("click", playGame);
 
 let humanScore = 0
 let computerScore = 0
@@ -20,35 +21,49 @@ else{
 }
 
 
-function getUserChoice(){
-const choice = prompt("what u gonna choose? ");
-return choice.toLowerCase();
-
-}
-
 
 function playRound(humanChoice,computerChoice){
+const result =document.querySelector('#result')
+
+
     if ( humanChoice ===  computerChoice ){
-        console.log("tie")
+        result.textContent = `Tie! both chose ${humanChoice}`
     }
+
     else if(( humanChoice === "paper" && computerChoice === "rock")||
     ( humanChoice === "scissors" && computerChoice === "paper")||
      ( humanChoice === "rock" && computerChoice === "scissors" )){
 
      humanScore++;
-        console.log("you win!")
-
+        result.textContent = `You win! ${humanChoice} beats ${computerChoice}`;
 }
+
 else{
     computerScore++;
-        console.log("You lose!");
-}}
-function playGame(){
-    for(let i = 1;i<=5;i++){
-    const humanSelection = getUserChoice();
-const computerSelection = getComputerChoice();
-    playRound(humanSelection,computerSelection);
-    console.log(`your score : ${humanScore} , computer score : ${computerScore} `)
+        result.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
 }
+
+document.querySelector("#human-score").textContent = humanScore;
+    document.querySelector("#computer-score").textContent = computerScore;
 }
+    
+
+    const buttons = document.querySelectorAll(".choice");
+
+    buttons.forEach((button) => {
+        button.addEventListener("click", () =>{
+            const humanChoice = button.dataset.choice;
+            const computerChoice = getComputerChoice();
+            playRound(humanChoice,computerChoice);
+        });
+    });
+
+// function playGame(){
+//     for(let i = 1;i<=5;i++){
+//     const humanSelection = getUserChoice();
+// const computerSelection = getComputerChoice();
+//     playRound(humanSelection,computerSelection);
+//     console.log(`your score : ${humanScore} , computer score : ${computerScore} `)
+// }
+// }
 
